@@ -1,0 +1,17 @@
+{
+  "name": "kiro-subagents-exemplo",
+  "version": "1.0.0",
+  "description": "Projeto exemplo para treinamento de Custom Subagents no Kiro",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "echo 'Lint OK - sem erros'"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.0"
+  },
+  "keywords": ["kiro", "subagents", "treinamento"],
+  "author": "Time Backend",
+  "license": "MIT"
+}

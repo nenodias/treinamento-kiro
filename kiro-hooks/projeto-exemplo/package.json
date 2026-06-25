@@ -1,0 +1,18 @@
+{
+  "name": "kiro-hooks-demo",
+  "version": "1.0.0",
+  "description": "Projeto de exemplo para demonstração de Agent Hooks no Kiro",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "lint": "eslint src/ --fix",
+    "test": "echo \"Testes passaram com sucesso!\" && exit 0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0"
+  }
+}

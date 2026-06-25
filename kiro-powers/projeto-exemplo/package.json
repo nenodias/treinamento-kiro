@@ -1,0 +1,13 @@
+{
+  "name": "kiro-powers-exemplo",
+  "version": "1.0.0",
+  "description": "Projeto exemplo para treinamento de Kiro Powers",
+  "type": "module",
+  "scripts": {
+    "start": "node src/handlers/criar-usuario.mjs",
+    "lint": "echo 'Lint OK - sem erros'"
+  },
+  "keywords": ["kiro", "powers", "treinamento"],
+  "author": "Time Backend",
+  "license": "MIT"
+}

@@ -1,0 +1,13 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Auto Review",
+      "trigger": "Stop",
+      "action": {
+        "type": "agent",
+        "prompt": "Revise rapidamente o código que você acabou de gerar. Verifique: 1) Tem try/catch nos handlers? 2) Usa sucesso()/erro() do utils? 3) Lógica está no service e não no handler? Se tudo ok, diga apenas 'Review OK ✅'. Se não, corrija."
+      }
+    }
+  ]
+}

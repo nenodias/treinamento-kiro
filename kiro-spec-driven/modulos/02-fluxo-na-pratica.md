@@ -14,15 +14,11 @@ O Kiro gera um `requirements.md` com user stories e critérios de aceitação.
 
 ```markdown
 ## Requisito 1: Login de usuário
-**Como** usuário registrado
-**Quero** fazer login com email e senha
-**Para** acessar recursos protegidos da aplicação
+
+**User Story:** Como usuário registrado, quero fazer login com email e senha para poder acessar recursos protegidos da aplicação.
 
 ### Critérios de aceitação:
-- [ ] Endpoint POST /auth/login aceita email e senha
-- [ ] Retorna JWT válido por 1 hora em caso de sucesso
-- [ ] Retorna 401 com mensagem genérica em caso de falha
-- [ ] Senha é validada com bcrypt
+WHEN usuário coloca email e senha na tela de login e clica em entrar, THE api SHALL validar se usuário e senha são válidos 
 ```
 
 ### O que você faz aqui:

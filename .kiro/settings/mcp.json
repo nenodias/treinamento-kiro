@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "fetch": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-fetch"
+      ],
+      "env": {},
+      "disabled": true,
+      "autoApprove": []
+    },
+    "trello-mcp": {
+      "command": "node",
+      "args": [
+        "C:/Users/ricardo.silveira/AppData/Roaming/npm/node_modules/mcp-server-trello/build/index.js"
+      ],
+      "env": {
+        "TRELLO_API_KEY": "***",
+        "TRELLO_TOKEN": "****",
+        "NODE_TLS_REJECT_UNAUTHORIZED": "0"
+      },
+      "disabled": true,
+      "autoApprove": [
+        "*"
+      ]
+    }
+  },
+  "powers": {
+    "mcpServers": {}
+  }
+}

@@ -1,8 +1,8 @@
 {
-  "version": "1.0.0",
   "enabled": true,
   "name": "Lint on Save",
   "description": "Roda ESLint automaticamente ao salvar arquivos TypeScript do projeto (src e tests)",
+  "version": "1",
   "when": {
     "type": "fileEdited",
     "patterns": [

@@ -1,6 +1,11 @@
 import { Router, Request, Response } from 'express';
 import { products } from '../database/products';
-import { validateQueryParams, filterProducts, sortProducts, paginateProducts } from '../services/productService';
+import {
+  validateQueryParams,
+  filterProducts,
+  sortProducts,
+  paginateProducts,
+} from '../services/productService';
 
 export const productsRouter = Router();
 
@@ -9,7 +14,7 @@ productsRouter.get('/', (req: Request, res: Response) => {
   const validation = validateQueryParams(req.query as Record<string, unknown>);
 
   if (!validation.success) {
-    const errorString = validation.errors.map(e => e.message).join('; ');
+    const errorString = validation.errors.map((e) => e.message).join('; ');
     return res.status(400).json({ error: errorString });
   }
 

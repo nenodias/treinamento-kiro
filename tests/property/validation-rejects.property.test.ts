@@ -18,7 +18,8 @@ describe('Property 5: Validation rejects invalid parameters', () => {
   const invalidLimitArb = fc.oneof(
     fc.integer({ min: -1000, max: 0 }), // integers below valid range
     fc.integer({ min: 101, max: 10000 }), // integers above valid range
-    fc.double({ min: 0.1, max: 99.9, noNaN: true, noDefaultInfinity: true })
+    fc
+      .double({ min: 0.1, max: 99.9, noNaN: true, noDefaultInfinity: true })
       .filter((n) => !Number.isInteger(n)), // non-integer numbers
     fc.constant('abc'), // non-numeric string
     fc.constant('3.5'), // string that parses to non-integer
@@ -29,7 +30,8 @@ describe('Property 5: Validation rejects invalid parameters', () => {
   // offset: non-integer or < 0
   const invalidOffsetArb = fc.oneof(
     fc.integer({ min: -1000, max: -1 }), // negative integers
-    fc.double({ min: 0.1, max: 100, noNaN: true, noDefaultInfinity: true })
+    fc
+      .double({ min: 0.1, max: 100, noNaN: true, noDefaultInfinity: true })
       .filter((n) => !Number.isInteger(n)), // non-integer positive numbers
     fc.constant('abc'), // non-numeric string
     fc.constant('-1'), // negative as string

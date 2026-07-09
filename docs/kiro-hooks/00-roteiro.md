@@ -1,0 +1,1 @@
+1. crie um hook manual que rode o lint ao salvar um arquivo

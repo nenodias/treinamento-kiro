@@ -21,8 +21,12 @@ const validQueryArbitrary = fc.record({
   sortBy: fc.constantFrom('name', 'price'),
   sortOrder: fc.constantFrom('asc', 'desc'),
   category: fc.option(fc.constantFrom(...CATEGORIES), { nil: undefined }),
-  minPrice: fc.option(fc.float({ min: 0, max: 50000, noNaN: true, noDefaultInfinity: true }), { nil: undefined }),
-  maxPrice: fc.option(fc.float({ min: 0, max: 100000, noNaN: true, noDefaultInfinity: true }), { nil: undefined }),
+  minPrice: fc.option(fc.float({ min: 0, max: 50000, noNaN: true, noDefaultInfinity: true }), {
+    nil: undefined,
+  }),
+  maxPrice: fc.option(fc.float({ min: 0, max: 100000, noNaN: true, noDefaultInfinity: true }), {
+    nil: undefined,
+  }),
 });
 
 describe('Property 7: Response structure invariant', () => {
@@ -73,7 +77,7 @@ describe('Property 7: Response structure invariant', () => {
         expect(typeof res.body.metadata.page).toBe('number');
         expect(typeof res.body.metadata.hasNext).toBe('boolean');
       }),
-      { numRuns: 100 }
+      { numRuns: 100 },
     );
   });
 });

@@ -21,15 +21,21 @@ const productArbitrary: fc.Arbitrary<Product> = fc.record({
   description: fc.string({ minLength: 0, maxLength: 100 }),
   price: fc.float({ min: 0, max: 100000, noNaN: true, noDefaultInfinity: true }),
   category: fc.constantFrom(...CATEGORIES),
-  createdAt: fc.integer({ min: 1577836800000, max: 1893456000000 }).map((ts) => new Date(ts).toISOString()),
+  createdAt: fc
+    .integer({ min: 1577836800000, max: 1893456000000 })
+    .map((ts) => new Date(ts).toISOString()),
 });
 
 const productArrayArbitrary = fc.array(productArbitrary, { minLength: 0, maxLength: 30 });
 
 const filterParamsArbitrary: fc.Arbitrary<ProductQueryParams> = fc.record({
   category: fc.option(fc.constantFrom(...CATEGORIES), { nil: undefined }),
-  minPrice: fc.option(fc.float({ min: 0, max: 50000, noNaN: true, noDefaultInfinity: true }), { nil: undefined }),
-  maxPrice: fc.option(fc.float({ min: 0, max: 100000, noNaN: true, noDefaultInfinity: true }), { nil: undefined }),
+  minPrice: fc.option(fc.float({ min: 0, max: 50000, noNaN: true, noDefaultInfinity: true }), {
+    nil: undefined,
+  }),
+  maxPrice: fc.option(fc.float({ min: 0, max: 100000, noNaN: true, noDefaultInfinity: true }), {
+    nil: undefined,
+  }),
   limit: fc.constant(10),
   offset: fc.constant(0),
   sortBy: fc.constant('name' as const),
@@ -54,7 +60,7 @@ describe('Property 1: Filter correctness', () => {
           }
         }
       }),
-      { numRuns: 100 }
+      { numRuns: 100 },
     );
   });
 
@@ -85,7 +91,7 @@ describe('Property 1: Filter correctness', () => {
           expect(result).toContainEqual(product);
         }
       }),
-      { numRuns: 100 }
+      { numRuns: 100 },
     );
   });
 });

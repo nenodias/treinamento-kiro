@@ -18,8 +18,14 @@ describe('Property 6: Validation accepts valid parameters', () => {
     // Arbitraries for valid values (or undefined to test defaults)
     const limitArb = fc.option(fc.integer({ min: 1, max: 100 }), { nil: undefined });
     const offsetArb = fc.option(fc.nat({ max: 10000 }), { nil: undefined });
-    const minPriceArb = fc.option(fc.float({ min: 0, max: 100000, noNaN: true, noDefaultInfinity: true }), { nil: undefined });
-    const maxPriceArb = fc.option(fc.float({ min: 0, max: 100000, noNaN: true, noDefaultInfinity: true }), { nil: undefined });
+    const minPriceArb = fc.option(
+      fc.float({ min: 0, max: 100000, noNaN: true, noDefaultInfinity: true }),
+      { nil: undefined },
+    );
+    const maxPriceArb = fc.option(
+      fc.float({ min: 0, max: 100000, noNaN: true, noDefaultInfinity: true }),
+      { nil: undefined },
+    );
     const sortByArb = fc.option(fc.constantFrom('name', 'price'), { nil: undefined });
     const sortOrderArb = fc.option(fc.constantFrom('asc', 'desc'), { nil: undefined });
     const categoryArb = fc.option(fc.string({ minLength: 1, maxLength: 50 }), { nil: undefined });
@@ -97,9 +103,9 @@ describe('Property 6: Validation accepts valid parameters', () => {
           } else {
             expect(result.params.category).toBeUndefined();
           }
-        }
+        },
       ),
-      { numRuns: 100 }
+      { numRuns: 100 },
     );
   });
 });

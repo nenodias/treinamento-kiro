@@ -56,7 +56,7 @@ describe('validateQueryParams', () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.errors).toEqual(
-          expect.arrayContaining([expect.objectContaining({ field: 'limit' })])
+          expect.arrayContaining([expect.objectContaining({ field: 'limit' })]),
         );
       }
     });
@@ -66,7 +66,7 @@ describe('validateQueryParams', () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.errors).toEqual(
-          expect.arrayContaining([expect.objectContaining({ field: 'limit' })])
+          expect.arrayContaining([expect.objectContaining({ field: 'limit' })]),
         );
       }
     });
@@ -76,7 +76,7 @@ describe('validateQueryParams', () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.errors).toEqual(
-          expect.arrayContaining([expect.objectContaining({ field: 'limit' })])
+          expect.arrayContaining([expect.objectContaining({ field: 'limit' })]),
         );
       }
     });
@@ -86,7 +86,7 @@ describe('validateQueryParams', () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.errors).toEqual(
-          expect.arrayContaining([expect.objectContaining({ field: 'limit' })])
+          expect.arrayContaining([expect.objectContaining({ field: 'limit' })]),
         );
       }
     });
@@ -98,7 +98,7 @@ describe('validateQueryParams', () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.errors).toEqual(
-          expect.arrayContaining([expect.objectContaining({ field: 'offset' })])
+          expect.arrayContaining([expect.objectContaining({ field: 'offset' })]),
         );
       }
     });
@@ -108,7 +108,7 @@ describe('validateQueryParams', () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.errors).toEqual(
-          expect.arrayContaining([expect.objectContaining({ field: 'offset' })])
+          expect.arrayContaining([expect.objectContaining({ field: 'offset' })]),
         );
       }
     });
@@ -118,7 +118,7 @@ describe('validateQueryParams', () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.errors).toEqual(
-          expect.arrayContaining([expect.objectContaining({ field: 'offset' })])
+          expect.arrayContaining([expect.objectContaining({ field: 'offset' })]),
         );
       }
     });
@@ -130,7 +130,7 @@ describe('validateQueryParams', () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.errors).toEqual(
-          expect.arrayContaining([expect.objectContaining({ field: 'minPrice' })])
+          expect.arrayContaining([expect.objectContaining({ field: 'minPrice' })]),
         );
       }
     });
@@ -140,7 +140,7 @@ describe('validateQueryParams', () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.errors).toEqual(
-          expect.arrayContaining([expect.objectContaining({ field: 'minPrice' })])
+          expect.arrayContaining([expect.objectContaining({ field: 'minPrice' })]),
         );
       }
     });
@@ -152,7 +152,7 @@ describe('validateQueryParams', () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.errors).toEqual(
-          expect.arrayContaining([expect.objectContaining({ field: 'maxPrice' })])
+          expect.arrayContaining([expect.objectContaining({ field: 'maxPrice' })]),
         );
       }
     });
@@ -162,7 +162,7 @@ describe('validateQueryParams', () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.errors).toEqual(
-          expect.arrayContaining([expect.objectContaining({ field: 'maxPrice' })])
+          expect.arrayContaining([expect.objectContaining({ field: 'maxPrice' })]),
         );
       }
     });
@@ -174,7 +174,7 @@ describe('validateQueryParams', () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.errors).toEqual(
-          expect.arrayContaining([expect.objectContaining({ field: 'sortBy' })])
+          expect.arrayContaining([expect.objectContaining({ field: 'sortBy' })]),
         );
       }
     });
@@ -186,7 +186,7 @@ describe('validateQueryParams', () => {
       expect(result.success).toBe(false);
       if (!result.success) {
         expect(result.errors).toEqual(
-          expect.arrayContaining([expect.objectContaining({ field: 'sortOrder' })])
+          expect.arrayContaining([expect.objectContaining({ field: 'sortOrder' })]),
         );
       }
     });

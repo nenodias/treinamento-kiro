@@ -24,13 +24,13 @@ const productArb = (index: number) =>
     name: fc.oneof(
       fc.string({ minLength: 1, maxLength: 20 }),
       // Include duplicates to test tiebreaker
-      fc.constantFrom('Alpha', 'alpha', 'Beta', 'beta', 'Gamma')
+      fc.constantFrom('Alpha', 'alpha', 'Beta', 'beta', 'Gamma'),
     ),
     description: fc.string({ minLength: 0, maxLength: 50 }),
     price: fc.oneof(
       fc.double({ min: 0, max: 100000, noNaN: true, noDefaultInfinity: true }),
       // Include duplicate prices to test tiebreaker
-      fc.constantFrom(9.99, 19.99, 29.99, 49.99)
+      fc.constantFrom(9.99, 19.99, 29.99, 49.99),
     ),
     category: fc.constantFrom('eletronicos', 'moveis', 'acessorios'),
     createdAt: fc.constant('2024-01-01T00:00:00Z'),
@@ -39,9 +39,7 @@ const productArb = (index: number) =>
 // Generator for an array of products with unique ids
 const productArrayArb = fc
   .integer({ min: 0, max: 30 })
-  .chain((size) =>
-    fc.tuple(...Array.from({ length: size }, (_, i) => productArb(i + 1)))
-  )
+  .chain((size) => fc.tuple(...Array.from({ length: size }, (_, i) => productArb(i + 1))))
   .map((products) => products as Product[]);
 
 // Generator for sort parameters
@@ -83,7 +81,7 @@ describe('Property 2: Sort correctness', () => {
           }
         }
       }),
-      { numRuns: 100 }
+      { numRuns: 100 },
     );
   });
 
@@ -97,14 +95,10 @@ describe('Property 2: Sort correctness', () => {
           const a = sorted[i];
           const b = sorted[i + 1];
 
-          let fieldsEqual = false;
-
-          if (params.sortBy === 'name') {
-            fieldsEqual =
-              a.name.toLowerCase().localeCompare(b.name.toLowerCase()) === 0;
-          } else {
-            fieldsEqual = a.price === b.price;
-          }
+          const fieldsEqual =
+            params.sortBy === 'name'
+              ? a.name.toLowerCase().localeCompare(b.name.toLowerCase()) === 0
+              : a.price === b.price;
 
           if (fieldsEqual) {
             // When sort field values are equal, id tiebreaker: a.id < b.id
@@ -112,7 +106,7 @@ describe('Property 2: Sort correctness', () => {
           }
         }
       }),
-      { numRuns: 100 }
+      { numRuns: 100 },
     );
   });
 });

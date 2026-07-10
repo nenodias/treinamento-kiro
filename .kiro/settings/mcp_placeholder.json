@@ -6,7 +6,7 @@
         "mcp-server-fetch"
       ],
       "env": {},
-      "disabled": true,
+      "disabled": false,
       "autoApprove": []
     },
     "trello-mcp": {
@@ -16,10 +16,10 @@
       ],
       "env": {
         "TRELLO_API_KEY": "***",
-        "TRELLO_TOKEN": "****",
+        "TRELLO_TOKEN": "***",
         "NODE_TLS_REJECT_UNAUTHORIZED": "0"
       },
-      "disabled": true,
+      "disabled": false,
       "autoApprove": [
         "*"
       ]

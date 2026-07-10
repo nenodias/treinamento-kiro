@@ -1,5 +1,10 @@
 import { Product } from '../database/products';
-import { PaginationMetadata, ProductQueryParams, ValidationError, ValidationResult } from '../types/productTypes';
+import {
+  PaginationMetadata,
+  ProductQueryParams,
+  ValidationError,
+  ValidationResult,
+} from '../types/productTypes';
 
 /**
  * Validates raw query string parameters and returns either parsed params or validation errors.
@@ -24,7 +29,10 @@ export function validateQueryParams(query: Record<string, unknown>): ValidationR
   if (query.offset !== undefined) {
     const parsed = Number(query.offset);
     if (!Number.isInteger(parsed) || parsed < 0) {
-      errors.push({ field: 'offset', message: 'offset must be an integer greater than or equal to 0' });
+      errors.push({
+        field: 'offset',
+        message: 'offset must be an integer greater than or equal to 0',
+      });
     } else {
       offset = parsed;
     }
@@ -35,7 +43,10 @@ export function validateQueryParams(query: Record<string, unknown>): ValidationR
   if (query.minPrice !== undefined) {
     const parsed = Number(query.minPrice);
     if (isNaN(parsed) || parsed < 0) {
-      errors.push({ field: 'minPrice', message: 'minPrice must be a number greater than or equal to 0' });
+      errors.push({
+        field: 'minPrice',
+        message: 'minPrice must be a number greater than or equal to 0',
+      });
     } else {
       minPrice = parsed;
     }
@@ -46,7 +57,10 @@ export function validateQueryParams(query: Record<string, unknown>): ValidationR
   if (query.maxPrice !== undefined) {
     const parsed = Number(query.maxPrice);
     if (isNaN(parsed) || parsed < 0) {
-      errors.push({ field: 'maxPrice', message: 'maxPrice must be a number greater than or equal to 0' });
+      errors.push({
+        field: 'maxPrice',
+        message: 'maxPrice must be a number greater than or equal to 0',
+      });
     } else {
       maxPrice = parsed;
     }
@@ -150,11 +164,14 @@ export function sortProducts(products: Product[], params: ProductQueryParams): P
  * The `products` parameter is the already-filtered-and-sorted array.
  * Returns paginated data slice and metadata (total, page, hasNext).
  */
-export function paginateProducts(products: Product[], params: ProductQueryParams): { data: Product[]; metadata: PaginationMetadata } {
+export function paginateProducts(
+  products: Product[],
+  params: ProductQueryParams,
+): { data: Product[]; metadata: PaginationMetadata } {
   const { offset, limit } = params;
   const total = products.length;
   const page = Math.floor(offset / limit) + 1;
-  const hasNext = (offset + limit) < total;
+  const hasNext = offset + limit < total;
   const data = products.slice(offset, offset + limit);
 
   return { data, metadata: { total, page, hasNext } };

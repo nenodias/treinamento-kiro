@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "name": "Atualizar README",
+  "description": "Hook de acionamento manual que atualiza o README.md na raiz do projeto com base na estrutura atual, endpoints e stack do projeto.",
+  "version": "1",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Analise a estrutura atual do projeto (src/, tests/, package.json) e atualize o README.md na raiz do projeto para refletir o estado atual: endpoints disponíveis, estrutura de pastas, comandos disponíveis e stack utilizada. Mantenha o texto em português."
+  }
+}

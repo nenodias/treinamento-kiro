@@ -26,8 +26,7 @@ export interface ValidationError {
  * Either succeeds with parsed params or fails with a list of errors.
  */
 export type ValidationResult =
-  | { success: true; params: ProductQueryParams }
-  | { success: false; errors: ValidationError[] };
+  { success: true; params: ProductQueryParams } | { success: false; errors: ValidationError[] };
 
 /**
  * Pagination metadata included in successful responses.

@@ -75,7 +75,7 @@ describe('GET /products - Integration Tests', () => {
 
   it('should combine category filter + sort by price asc + pagination (limit=2&offset=0)', async () => {
     const response = await request(app).get(
-      '/products?category=eletronicos&sortBy=price&sortOrder=asc&limit=2&offset=0'
+      '/products?category=eletronicos&sortBy=price&sortOrder=asc&limit=2&offset=0',
     );
 
     expect(response.status).toBe(200);

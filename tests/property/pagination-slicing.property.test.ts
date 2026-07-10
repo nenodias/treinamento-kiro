@@ -21,7 +21,9 @@ const productArbitrary: fc.Arbitrary<Product> = fc.record({
   description: fc.string({ minLength: 0, maxLength: 100 }),
   price: fc.float({ min: 0, max: 100000, noNaN: true, noDefaultInfinity: true }),
   category: fc.constantFrom(...CATEGORIES),
-  createdAt: fc.integer({ min: 1577836800000, max: 1893456000000 }).map((ts) => new Date(ts).toISOString()),
+  createdAt: fc
+    .integer({ min: 1577836800000, max: 1893456000000 })
+    .map((ts) => new Date(ts).toISOString()),
 });
 
 const productArrayArbitrary = fc.array(productArbitrary, { minLength: 0, maxLength: 30 });
@@ -34,8 +36,8 @@ describe('Property 3: Pagination slicing', () => {
           fc.tuple(
             fc.constant(products),
             fc.integer({ min: 0, max: products.length + 10 }),
-            fc.integer({ min: 1, max: 100 })
-          )
+            fc.integer({ min: 1, max: 100 }),
+          ),
         ),
         ([products, offset, limit]) => {
           const params: ProductQueryParams = {
@@ -49,9 +51,9 @@ describe('Property 3: Pagination slicing', () => {
           const expectedSlice = products.slice(offset, offset + limit);
 
           expect(result.data).toEqual(expectedSlice);
-        }
+        },
       ),
-      { numRuns: 100 }
+      { numRuns: 100 },
     );
   });
 
@@ -61,9 +63,12 @@ describe('Property 3: Pagination slicing', () => {
         productArrayArbitrary.chain((products) =>
           fc.tuple(
             fc.constant(products),
-            fc.integer({ min: Math.max(products.length, 0), max: Math.max(products.length, 0) + 10 }),
-            fc.integer({ min: 1, max: 100 })
-          )
+            fc.integer({
+              min: Math.max(products.length, 0),
+              max: Math.max(products.length, 0) + 10,
+            }),
+            fc.integer({ min: 1, max: 100 }),
+          ),
         ),
         ([products, offset, limit]) => {
           const params: ProductQueryParams = {
@@ -76,9 +81,9 @@ describe('Property 3: Pagination slicing', () => {
           const result = paginateProducts(products, params);
 
           expect(result.data).toEqual([]);
-        }
+        },
       ),
-      { numRuns: 100 }
+      { numRuns: 100 },
     );
   });
 
@@ -89,8 +94,8 @@ describe('Property 3: Pagination slicing', () => {
           fc.tuple(
             fc.constant(products),
             fc.integer({ min: 0, max: products.length + 10 }),
-            fc.integer({ min: 1, max: 100 })
-          )
+            fc.integer({ min: 1, max: 100 }),
+          ),
         ),
         ([products, offset, limit]) => {
           const params: ProductQueryParams = {
@@ -103,9 +108,9 @@ describe('Property 3: Pagination slicing', () => {
           const result = paginateProducts(products, params);
 
           expect(result.data.length).toBeLessThanOrEqual(limit);
-        }
+        },
       ),
-      { numRuns: 100 }
+      { numRuns: 100 },
     );
   });
 });

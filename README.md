@@ -1,11 +1,13 @@
-# Demo — Spec Driven Development com Kiro
+# Treinamento Kiro
 
-Projeto backend usado na demonstração ao vivo do treinamento.
+Repositório de apoio para o programa de treinamento do **Kiro IDE**. O projeto é uma API REST de catálogo de produtos que evolui ao longo das sessões — cada módulo adiciona novas funcionalidades e demonstra uma feature diferente do Kiro.
 
 ## Stack
 
-- Node.js + TypeScript
-- Express
+- Node.js + TypeScript (strict mode)
+- Express 4.x
+- Vitest + fast-check + supertest (testes)
+- ESLint + Prettier (qualidade de código)
 - Dados em memória (sem banco externo)
 
 ## Setup
@@ -15,34 +17,107 @@ npm install
 npm run dev
 ```
 
-## Endpoints existentes
+## Comandos disponíveis
 
-| Método | Rota      | Descrição         |
-|--------|-----------|-------------------|
-| GET    | /health   | Health check      |
+| Comando | Descrição |
+|---------|-----------|
+| `npm run dev` | Servidor com hot reload |
+| `npm run build` | Compila TypeScript para `dist/` |
+| `npm start` | Roda build compilado |
+| `npm test` | Executa todos os testes |
+| `npm run lint` | Roda ESLint |
+| `npm run lint:fix` | Corrige problemas de lint |
+| `npm run format` | Formata com Prettier |
 
-## O que será criado na demo
+## Endpoints
 
-Durante a demonstração ao vivo, usaremos o **Spec Driven** do Kiro para criar:
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| GET | /health | Health check (status + timestamp) |
+| GET | /products | Listagem com filtros, ordenação e paginação |
 
-> **GET /products** — Endpoint de busca de produtos com filtros, paginação e ordenação.
+### Query params de `/products`
 
-O objetivo é mostrar o fluxo completo:
-1. Requisitos gerados e revisados
-2. Design aprovado
-3. Tarefas criadas
-4. Implementação automática
+| Param | Tipo | Default | Descrição |
+|-------|------|---------|-----------|
+| category | string | — | Filtro por categoria (exato) |
+| minPrice | number | — | Preço mínimo (inclusivo) |
+| maxPrice | number | — | Preço máximo (inclusivo) |
+| sortBy | name \| price | name | Campo de ordenação |
+| sortOrder | asc \| desc | asc | Direção da ordenação |
+| limit | 1–100 | 10 | Itens por página |
+| offset | ≥ 0 | 0 | Itens a pular |
 
-## Estrutura
+## Módulos do Treinamento
+
+Cada sessão foca em uma feature do Kiro e adiciona algo ao projeto:
+
+| # | Sessão | Feature do Kiro | O que adiciona ao projeto | Docs |
+|---|--------|-----------------|---------------------------|------|
+| 1 | Spec Driven Development | Specs (requirements → design → tasks) | Endpoint `/products`, services, types, testes | [docs/kiro-spec-driven](docs/kiro-spec-driven/) |
+| 2 | Steering Documents | Steering files (.kiro/steering/) | Padrões de tech, estrutura, produto, testes, git flow | [docs/kiro-steering-documents](docs/kiro-steering-documents/) |
+| 3 | Agent Hooks | Hooks (.kiro/hooks/) | Automações de lint on save e update README | [docs/kiro-hooks](docs/kiro-hooks/) |
+| 4 | Kiro Powers | Powers + MCP | Integração com serviços externos via Powers | [docs/kiro-powers](docs/kiro-powers/) |
+| 5 | Kiro Skills | Skills do agente | Skills customizadas (caveman, commit, review) | [docs/kiro-skills](docs/kiro-skills/) |
+| 6 | Kiro CLI | CLI (autocomplete, chat, translate) | Uso do Kiro fora da IDE | [docs/kiro-cli](docs/kiro-cli/) |
+| 7 | Caveman Mode | Compressão de tokens | Comunicação ultra-compacta para economizar contexto | [docs/kiro-caveman-training](docs/kiro-caveman-training/) |
+| 8 | Subagents | Agentes especializados | Delegação de tarefas a subagentes | [docs/kiro-subagents](docs/kiro-subagents/) |
+
+## Estrutura do Projeto
 
 ```
-src/
-├── app.ts              # Configuração do Express
-├── server.ts           # Entrypoint
-├── database/
-│   └── products.ts     # Dados fake (simula DB)
-└── routes/
-    └── health.ts       # Health check
+├── src/
+│   ├── app.ts                  # Setup Express (middleware + rotas)
+│   ├── server.ts               # Entrypoint
+│   ├── database/products.ts    # 15 produtos em memória
+│   ├── routes/
+│   │   ├── health.ts           # GET /health
+│   │   └── products.ts         # GET /products (pipeline)
+│   ├── services/
+│   │   └── productService.ts   # Validate, filter, sort, paginate
+│   └── types/
+│       └── productTypes.ts     # Interfaces e tipos
+├── tests/
+│   ├── unit/                   # Testes unitários
+│   ├── property/               # Testes property-based (fast-check)
+│   └── integration/            # Testes HTTP (supertest)
+├── .kiro/
+│   ├── steering/               # Steering documents do projeto
+│   ├── hooks/                  # Agent hooks configurados
+│   └── specs/                  # Specs (requirements, design, tasks)
+├── docs/                       # Material de cada sessão de treinamento
+└── backup-files/               # Backups de hooks e steerings para demos
 ```
 
-Após a demo, a estrutura terá novos arquivos criados pelo Kiro via Spec.
+## Como usar este repositório
+
+### Como instrutor
+1. Clone o repo e rode `npm install`
+2. Abra no Kiro IDE
+3. Siga o material em `docs/` na ordem das sessões
+4. Cada sessão tem seu próprio README com roteiro de apresentação
+
+### Como participante
+1. Clone o repo e rode `npm install`
+2. Acompanhe a sessão ao vivo
+3. Consulte os docs de cada módulo para revisão posterior
+4. Explore os arquivos em `.kiro/` para entender a configuração
+
+## Evolução progressiva
+
+O projeto começa simples (Express + health check) e vai ganhando corpo:
+
+```
+Sessão 1 → Código (endpoint, services, types, testes)
+Sessão 2 → Governança (steering documents com padrões do time)
+Sessão 3 → Automação (hooks para lint, README, segurança)
+Sessão 4 → Integração (powers e MCP servers)
+Sessão 5 → Produtividade (skills customizadas)
+Sessão 6 → CLI (uso headless e em pipelines)
+Sessão 7 → Eficiência (caveman mode para economizar tokens)
+Sessão 8 → Delegação (subagentes especializados)
+```
+
+---
+
+> 📌 **Fontes**: [Documentação Kiro](https://kiro.dev/docs/)

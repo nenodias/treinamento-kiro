@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "enabled": true,
+  "name": "Lint on Save",
+  "description": "Roda ESLint automaticamente ao salvar arquivos TypeScript do projeto (src e tests)",
+  "when": {
+    "type": "fileEdited",
+    "patterns": [
+      "src/**/*.ts",
+      "tests/**/*.ts"
+    ]
+  },
+  "then": {
+    "type": "runCommand",
+    "command": "npm run format & npm run lint:fix"
+  }
+}

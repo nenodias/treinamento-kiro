@@ -35,6 +35,7 @@ Diferente dos Steering Documents (que guiam *como* o agente pensa), Hooks automa
 | [02 — Tipos e Ações](02-tipos-e-acoes.md) | 10 triggers + 2 tipos de ação | ~7 min |
 | [03 — Exemplos Práticos](03-exemplos-praticos.md) | 6 casos de uso reais com JSON | ~5 min |
 | [04 — Demo ao Vivo](04-demo-ao-vivo.md) | Criação e teste de hooks no projeto | ~8 min |
+| [05 — Roteiro de Apresentação](05-roteiro-apresentacao.md) | Guia completo para o instrutor | — |
 
 ## Pré-requisitos
 

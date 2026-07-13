@@ -4,143 +4,179 @@
 
 ---
 
-## Setup da Demo
+## Contexto
 
-Abra o projeto `projeto-exemplo/` no Kiro. É uma API Node.js simples de gerenciamento de tarefas.
+Vamos criar hooks no **mesmo projeto** das sessões anteriores — a API de produtos com TypeScript, Express, ESLint e Vitest já configurados. O projeto já tem steering documents definindo padrões, agora adicionamos automações que garantem esses padrões na prática.
+
+### O que já existe no projeto
 
 ```
-projeto-exemplo/
-├── src/
-│   ├── controllers/
-│   │   └── tarefa-controller.js
-│   ├── services/
-│   │   └── tarefa-service.js
-│   ├── utils/
-│   │   └── helpers.js
-│   └── app.js
-├── package.json
-└── README.md
+src/
+├── app.ts                      # Express app
+├── server.ts                   # Entrypoint
+├── database/products.ts        # 15 produtos em memória
+├── routes/products.ts          # GET /products (pipeline)
+├── services/productService.ts  # Validate, filter, sort, paginate
+└── types/productTypes.ts       # Interfaces
+
+.kiro/
+├── steering/                   # Padrões do time (sessão anterior)
+│   ├── tech.md
+│   ├── structure.md
+│   └── padroes-testes.md
+└── hooks/                      # ← VAMOS CRIAR HOOKS AQUI
 ```
 
 ---
 
-## Demo 1: Criando um Hook via Chat (~3 min)
+## Preparação
 
-### Passo a passo:
-
-1. **Abra o chat do Kiro**
-2. **Digite**:
-
-```
-Crie um hook que rode "npm run lint" toda vez que eu salvar um arquivo .js neste projeto
-```
-
-3. **O Kiro vai**:
-   - Gerar o JSON do hook
-   - Salvar em `.kiro/hooks/`
-   - Ativar automaticamente
-
-4. **Teste**:
-   - Abra `src/controllers/tarefa-controller.js`
-   - Faça uma alteração qualquer
-   - Salve o arquivo (`Ctrl + S`)
-   - Observe o lint rodar automaticamente
+Antes de iniciar a demo:
+1. Certifique-se que `.kiro/hooks/` está vazio (ou remova hooks existentes)
+2. Os backups estão em `backup-files/hooks/` caso precise restaurar
+3. Abra o painel **Agent Hooks** na sidebar para visibilidade
 
 ---
 
-## Demo 2: Criando um Hook via UI (~2 min)
+## Demo 1: Lint on Save — Hook via UI (~3 min)
 
-### Passo a passo:
+> **Tipo**: Run Command (rápido, sem créditos)
+>
+> **Cenário real**: "Nosso steering define padrões de formatação. Vamos garantir que todo arquivo salvo já saia formatado e sem erros de lint."
+
+### Passo a passo
 
 1. **Abra o painel Agent Hooks** (sidebar do Kiro)
 2. **Clique no `+`**
 3. **Selecione**: "Manually create a hook"
 4. **Preencha**:
-   - **Title**: Security Review
-   - **Description**: Revisa código gerado buscando problemas de segurança
-   - **Event**: Agent Stop
-   - **Action**: Ask Kiro
-   - **Instructions**:
-
-```
-Revise o código que acabou de ser gerado. Verifique:
-1. Há credenciais ou tokens hardcoded?
-2. Há SQL injection ou inputs não sanitizados?
-3. As dependências importadas são confiáveis?
-Se encontrar problemas, corrija imediatamente.
-```
-
+   - **Title**: Lint on Save
+   - **Description**: Roda formatação e lint automaticamente ao salvar arquivos TypeScript
+   - **Event**: File Saved
+   - **Patterns**: `src/**/*.ts`, `tests/**/*.ts`
+   - **Action**: Run Command
+   - **Command**: `npm run format & npm run lint:fix`
 5. **Clique em "Create Hook"**
 
-6. **Teste**:
-   - Peça ao Kiro: "Crie uma função que conecta no banco de dados"
-   - Depois que ele gerar, observe o hook de segurança ser disparado automaticamente
+### Teste ao vivo
+
+1. Abra `src/services/productService.ts`
+2. **Bagunce a formatação**: adicione espaços extras, quebre a indentação de uma função
+3. **Salve o arquivo** (`Ctrl + S`)
+4. Observe: o hook executa, o arquivo volta ao formato correto automaticamente
+
+### Pontos para destacar
+
+- ⚡ Execução instantânea (< 2 segundos)
+- 💰 **Não consome créditos** — é só um comando shell
+- 🔄 Executa toda vez que salvar, sem precisar lembrar
+- 📁 Mostre o arquivo JSON gerado em `.kiro/hooks/` — transparência total
 
 ---
 
-## Demo 3: Hook de geração de documentação (Manual Trigger) (~3 min)
+## Demo 2: Atualizar README — Hook via Chat (~3 min)
 
-### Passo a passo:
+> **Tipo**: Ask Kiro (inteligente, consome créditos)
+>
+> **Cenário real**: "O projeto evolui toda sessão. O README precisa refletir o estado atual. Ao invés de atualizar manualmente, o Kiro analisa e atualiza."
 
-1. **No chat, digite**:
+### Passo a passo
+
+1. **Abra o chat do Kiro**
+2. **Digite**:
 
 ```
-Crie um hook manual que, quando eu clicar nele, gera documentação JSDoc para o arquivo que estou editando
+Crie um hook manual que, quando eu clicar nele, analise a estrutura atual do projeto
+(src/, tests/, package.json) e atualize o README.md na raiz para refletir o estado
+atual: endpoints disponíveis, estrutura de pastas, comandos e stack. Mantenha em português.
 ```
 
-2. **O Kiro vai criar um hook com trigger Manual**
+3. **O Kiro vai**:
+   - Gerar o JSON do hook com trigger `userTriggered`
+   - Salvar em `.kiro/hooks/`
+   - O hook aparece no painel com um botão ▶️
 
-3. **Teste**:
-   - Abra `src/services/tarefa-service.js`
-   - Vá no painel **Agent Hooks**
-   - Clique no botão ▶️ do hook "Gerar Documentação"
-   - Observe o Kiro adicionar JSDoc em todas as funções
+### Teste ao vivo
+
+1. Vá no painel **Agent Hooks**
+2. Clique no botão **▶️** do hook "Atualizar README"
+3. Observe o Kiro:
+   - Ler a estrutura do projeto
+   - Analisar endpoints, packages, testes
+   - Reescrever o README com informações atualizadas
+
+### Pontos para destacar
+
+- 🧠 O agente **raciocina** sobre o projeto — não é um template fixo
+- 💰 **Consome créditos** — gera uma interação com o LLM
+- 🖱️ Trigger manual — só executa quando você quiser
+- 📝 Resultado muito mais rico que um script simples conseguiria
+
+---
+
+## Comparação: Run Command vs Ask Kiro (~2 min)
+
+Após as duas demos, compare lado a lado:
+
+| Aspecto | Demo 1 (Lint) | Demo 2 (README) |
+|---------|---------------|-----------------|
+| **Ação** | Run Command | Ask Kiro |
+| **Velocidade** | ~1-2 segundos | ~10-20 segundos |
+| **Créditos** | Nenhum | Consome |
+| **Inteligência** | Nenhuma (determinístico) | Alta (analisa contexto) |
+| **Trigger** | Automático (ao salvar) | Manual (botão) |
+| **Ideal para** | Tarefas com comando fixo | Tarefas que exigem raciocínio |
+
+### Pergunta para o grupo
+
+> "Pensando no dia a dia de vocês: que tarefas seriam Run Command e quais seriam Ask Kiro?"
+
+**Exemplos de respostas esperadas:**
+- Run Command: lint, testes, build, type-check
+- Ask Kiro: review de segurança, gerar documentação, atualizar changelog
 
 ---
 
 ## Dicas para a Demo
 
-### Se algo der errado:
-- Verifique se o hook aparece no painel Agent Hooks
-- Confira se o file pattern está correto
-- Hooks de Run Command precisam que o comando exista (ex: `npm run lint` precisa ter o script no package.json)
+### Se algo der errado
+- Hook não aparece no painel → verifique se o JSON é válido em `.kiro/hooks/`
+- Lint falha → confirme que `npm install` foi executado
+- Ask Kiro não responde → verifique conexão com o serviço
 
-### Para impressionar:
-- Mostre o JSON gerado em `.kiro/hooks/` — transparência total
-- Mostre que hooks **Run Command** não consomem créditos
-- Mostre a diferença de velocidade: Run Command (instantâneo) vs Ask Kiro (poucos segundos)
+### Para impressionar
+- Mostre o JSON do hook — é simples e legível
+- Mostre que hooks estão no repo — `git status` mostra os novos arquivos em `.kiro/hooks/`
+- Conecte com steering: "O steering de `padroes-testes.md` diz *como* escrever testes. Um hook de `postTaskExecution` poderia *rodar* esses testes automaticamente após cada task do Spec."
 
 ---
 
 ## Encerramento (~2 min)
 
-### Recapitulando o treinamento:
+### Recapitulando
 
-✅ **Módulo 01**: Hooks = automação baseada em eventos
-✅ **Módulo 02**: 10 triggers + 2 ações (Ask Kiro / Run Command)
-✅ **Módulo 03**: Exemplos reais para segurança, lint, testes, i18n
-✅ **Módulo 04**: Criamos hooks ao vivo via chat e via UI
+✅ **Módulo 01**: Hooks = automação por eventos (conceito do zero)
+✅ **Módulo 02**: 10 triggers + 2 ações (Run Command / Ask Kiro)
+✅ **Módulo 03**: Exemplos reais (segurança, lint, testes, i18n)
+✅ **Módulo 04**: Criamos 2 hooks no projeto real — um rápido, um inteligente
 
-### Próximos passos para o time:
+### Como Hooks se conectam com o que já vimos
+
+```
+Spec Driven  → Define O QUE construir (requisitos, design, tarefas)
+Steering     → Define COMO o agente deve pensar (padrões, convenções)
+Hooks        → Define QUANDO ações automáticas acontecem (eventos → reações)
+```
+
+### Próximos passos para o time
 
 1. Identifique 1-2 tarefas repetitivas que você faz todo dia
-2. Crie hooks para automatizá-las
-3. Compartilhe hooks úteis com o time (`.kiro/hooks/` vive no repo)
+2. Decida: é Run Command ou Ask Kiro?
+3. Crie o hook e compartilhe com o time via Git
 
-### Links úteis:
+### Próxima sessão
 
-- 📖 [Documentação oficial](https://kiro.dev/docs/hooks/)
-- 🎯 [Tipos de hooks](https://kiro.dev/docs/hooks/types/)
-- 💡 [Exemplos](https://kiro.dev/docs/hooks/examples/)
-- ⚙️ [Gerenciamento](https://kiro.dev/docs/hooks/management/)
-
----
-
-## Perguntas?
-
-> 💬 Abra o chat e pergunte ao Kiro: "Que tipos de hooks eu posso criar?"
->
-> Ele vai te explicar tudo!
+> Na próxima sessão veremos **Powers** — como expandir o Kiro com ferramentas externas via MCP (Trello, AWS, Miro e mais).
 
 ---
 

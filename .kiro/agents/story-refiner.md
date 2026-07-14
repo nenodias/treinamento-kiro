@@ -68,7 +68,11 @@ Gere dois diagramas usando Mermaid (via `mcp_drawio_open_drawio_mermaid`) para d
 
 2. **Diagrama de Fluxo** — Mostra o fluxo de execução da feature passo a passo, desde a requisição HTTP até a resposta, incluindo caminhos de sucesso e erro. Use um flowchart TD com decision nodes para validações e condicionais.
 
-Inclua os diagramas em formato Mermaid na descrição do card no Trello para que o time possa visualizar a solução proposta.
+Após gerar cada diagrama via `mcp_drawio_open_drawio_mermaid`, obtenha o link/URL retornado pela ferramenta. Na descrição do card no Trello, inclua apenas os **links dos diagramas** (não o código-fonte Mermaid). Use o formato:
+- `[📐 Ver Diagrama de Arquitetura](URL_DO_DIAGRAMA)`
+- `[🔀 Ver Diagrama de Fluxo](URL_DO_DIAGRAMA)`
+
+**IMPORTANTE:** NÃO inclua blocos de código Mermaid na descrição do card. Inclua apenas os links gerados pelo draw.io para que o time possa abrir e visualizar os diagramas interativamente.
 
 ### Passo 4: Atualizar o Trello
 - Atualize a **descrição (corpo) do card** com o refinamento técnico detalhado completo (visão geral, arquivos impactados, diagramas, subtasks com payloads, cenários de teste, critérios de aceite — tudo no corpo do card usando `mcp_trello_mcp_update_card_details` com o campo `description`)
@@ -96,36 +100,13 @@ A descrição do card deve seguir este formato markdown:
 
 ### 🏗️ Diagrama de Arquitetura
 
-```mermaid
-flowchart LR
-  subgraph Routes
-    R1[POST /products]
-  end
-  subgraph Validators
-    V1[productValidator]
-  end
-  subgraph Services
-    S1[productService]
-  end
-  subgraph Database
-    DB[(products)]
-  end
-  R1 --> V1 --> S1 --> DB
-```
-
-[Adaptar o diagrama acima para refletir os componentes reais da implementação]
+[📐 Ver Diagrama de Arquitetura](URL_GERADA_PELO_DRAWIO)
 
 ### 🔀 Diagrama de Fluxo
 
-```mermaid
-flowchart TD
-  A[Requisição HTTP] --> B{Validação}
-  B -->|Válido| C[Service processa]
-  C --> D[Resposta 200/201]
-  B -->|Inválido| E[Resposta 400 com erros]
-```
+[🔀 Ver Diagrama de Fluxo](URL_GERADA_PELO_DRAWIO)
 
-[Adaptar o diagrama acima para refletir o fluxo real da feature, incluindo todos os caminhos de decisão]
+[Substituir as URLs acima pelos links reais retornados pelo `mcp_drawio_open_drawio_mermaid`]
 
 ---
 

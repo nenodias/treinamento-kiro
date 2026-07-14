@@ -8,6 +8,8 @@
   },
   "then": {
     "type": "askAgent",
-    "prompt": "#guia-commit.md  inicie o commit"
-  }
+    "prompt": "Leia as mudanças atualmente em staged (#Git Diff).\n#guia-commit.md  inicie o commit"
+  },
+  "workspaceFolderName": "treinamento-kiro",
+  "shortName": "commit-changes"
 }

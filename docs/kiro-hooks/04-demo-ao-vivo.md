@@ -105,8 +105,44 @@ atual: endpoints disponíveis, estrutura de pastas, comandos e stack. Mantenha e
    - Analisar endpoints, packages, testes
    - Reescrever o README com informações atualizadas
 
-### Pontos para destacar
 
+## Demo 3: Hook manual de commit chamando steering files e usando comandos do chat (~3 min)
+
+> **Tipo**: Ask Kiro (inteligente, consome créditos)
+>
+> **Cenário real**: "Criar commits significativos apenas com os arquivos em stage"
+
+### Passo a passo
+
+1. **Abra o painel Agent Hooks** (sidebar do Kiro)
+2. **Clique no `+`**
+3. **Selecione**: "Manually create a hook"
+4. **Preencha**:
+   - **Title**: Commit staged changes
+   - **Description**: Cria um commit com as alterações em stage com uma mensagem significativa
+   - **Event**: Manual
+   - **Action**: Ask kiro (inteligente, consome créditos)
+   - **Prompt**: 
+   ```
+   Leia as mudanças atualmente em staged (#Git Diff).
+   #guia-commit.md  inicie o commit.
+   ```
+5. **Clique em "Create Hook"**
+
+### Teste ao vivo
+
+1. Abra dois arquivos de rotas e adicione linhas ao final deles.
+2. adicione apenas um em stage.
+1. Abra o Hook **Commit staged changes**
+2. Clique no botão **Start Hook**
+3. Observe o Kiro:
+   - Ler apenas os arquivos em stage
+   - Iniciar as validações do steering de commit
+   - Criar um commit apenas com o arquivo que estava em stage
+
+
+### Pontos para destacar
+- Todos os comandos usados no chat podem ser usados nos hooks
 - 🧠 O agente **raciocina** sobre o projeto — não é um template fixo
 - 💰 **Consome créditos** — gera uma interação com o LLM
 - 🖱️ Trigger manual — só executa quando você quiser

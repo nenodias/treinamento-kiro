@@ -94,11 +94,15 @@ As tools sao declaradas por **categorias** (tags) no front matter:
 
 | Categoria | O que inclui |
 |-----------|-------------|
-| `read` | Leitura de arquivos, busca de conteudo, navegacao no projeto |
-| `write` | Criacao e edicao de arquivos |
-| `shell` | Execucao de comandos no terminal |
+| `read` | Leitura de arquivos, listagem de diretorios, busca de conteudo |
+| `write` | Escrita, edicao e exclusao de arquivos |
+| `shell` | Execucao de comandos e gerenciamento de processos |
 | `web` | Busca na internet e fetch de URLs |
 | `subagent` | Capacidade de delegar tarefas para subagents |
+| `context` | Ferramentas de contexto e steering |
+| `@mcp` | Todas as ferramentas MCP definidas no mcp.json |
+| `@builtin` | Todas as ferramentas built-in do Kiro |
+| `*` | Tudo (todas as categorias acima) |
 
 Quando novas tools sao adicionadas a uma categoria, seu agente automaticamente ganha acesso a elas.
 

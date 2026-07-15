@@ -166,18 +166,19 @@ tools:
   - read
   - shell
 permissions:
-  - capability: file_read
-    match: "**/*.ts"
-    effect: allow
-  - capability: file_read
-    match: "**/.env*"
-    effect: deny
-  - capability: shell
-    match: "npm *"
-    effect: allow
-  - capability: shell
-    match: "rm *"
-    effect: deny
+  rules:
+    - capability: file_read
+      match: "**/*.ts"
+      effect: allow
+    - capability: file_read
+      match: "**/.env*"
+      effect: deny
+    - capability: shell
+      match: "npm *"
+      effect: allow
+    - capability: shell
+      match: "rm *"
+      effect: deny
 ---
 
 Voce e um agente de auditoria. Apenas leia codigo TypeScript.

@@ -22,7 +22,34 @@ O agent do Kiro opera em dois modos de autonomia:
 - **Autopilot**: trabalha de ponta a ponta sem interrupcoes, voce revisa depois
 - **Supervised**: pausa apos cada alteracao para voce aprovar ou rejeitar
 
-## 2. O que é um Custom Agent?
+---
+
+## 2. O que sao Subagents?
+
+**Subagents** sao agentes que rodam em paralelo ou de forma delegada pelo agente principal. Cada subagent tem seu proprio contexto isolado, mantendo o contexto do agente principal limpo e focado.
+
+
+```
+┌─────────────────────────────────────────────────────┐
+│              SEM Subagents (sequencial)             │
+│                                                     │
+│  [Review] → [Testes] → [Docs] → Resposta            │
+│  (contexto poluído, lento)                          │
+└─────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────┐
+│              COM Subagents (paralelo)               │
+│                                                     │
+│  [Subagent: Review]  ──┐                            │
+│  [Subagent: Testes]  ──┼──→ Resultado combinado     │
+│  [Subagent: Docs]    ──┘                            │
+│  (contexto limpo, rápido)                           │
+└─────────────────────────────────────────────────────┘
+```
+
+---
+
+## 3. O que é um Custom Agent?
 
 Um **Custom Agent** e um agente especializado que voce define para tarefas ou workflows especificos. Ele e configurado por meio de um **arquivo Markdown** (`.md`) salvo em:
 
@@ -39,32 +66,6 @@ O custom agent aparece automaticamente no seletor de agentes assim que o arquivo
 - Quando quer compartilhar uma configuracao padronizada com seu time via git
 - Quando precisa de um prompt de sistema personalizado para determinado dominio
 
----
-
-## 3. O que sao Subagents?
-
-**Subagents** sao agentes que rodam em paralelo ou de forma delegada pelo agente principal. Cada subagent tem seu proprio contexto isolado, mantendo o contexto do agente principal limpo e focado.
-
-
-```
-┌─────────────────────────────────────────────────────┐
-│              SEM Subagents (sequencial)              │
-│                                                     │
-│  [Review] → [Testes] → [Docs] → Resposta           │
-│  (contexto poluído, lento)                          │
-└─────────────────────────────────────────────────────┘
-
-┌─────────────────────────────────────────────────────┐
-│              COM Subagents (paralelo)                │
-│                                                     │
-│  [Subagent: Review]  ──┐                            │
-│  [Subagent: Testes]  ──┼──→ Resultado combinado     │
-│  [Subagent: Docs]    ──┘                            │
-│  (contexto limpo, rápido)                           │
-└─────────────────────────────────────────────────────┘
-```
-
----
 
 ## 4. Configurando um Custom Agent
 

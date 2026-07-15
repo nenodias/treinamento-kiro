@@ -76,6 +76,7 @@ O arquivo e um Markdown com **YAML front matter** no topo para configuracoes e o
 ---
 name: meu-agente-aws
 description: Agente especializado em infra AWS com Terraform
+model: claude-sonnet-4
 tools:
   - read
   - write

@@ -60,7 +60,7 @@ O custom agent aparece automaticamente no seletor de agentes assim que o arquivo
 
 ### Quando criar um Custom Agent?
 
-- Quando voce tem um workflow repetitivo que precisa de regras especificas (ex: code review, infra AWS, migracao de banco)
+- Quando voce tem um workflow repetitivo que precisa de regras especificas (ex: refinamento de historia, code review, infra AWS, migracao de banco)
 - Quando quer restringir as ferramentas disponiveis para uma tarefa (ex: agente somente leitura para auditorias)
 - Quando deseja integrar MCP servers especificos ao agente
 - Quando quer compartilhar uma configuracao padronizada com seu time via git

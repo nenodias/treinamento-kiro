@@ -28,3 +28,5 @@ npm-debug.log*
 # Temp files
 *.tmp
 *.swp
+dist/
+.kiro/settings/mcp.json

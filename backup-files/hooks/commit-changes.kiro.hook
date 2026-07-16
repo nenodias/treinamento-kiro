@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "enabled": true,
+  "name": "Commit changes",
+  "description": "Commit changes",
+  "when": {
+    "type": "userTriggered"
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Leia as mudanças atualmente em staged (#Git Diff).\n#guia-commit.md  inicie o commit"
+  },
+  "workspaceFolderName": "treinamento-kiro",
+  "shortName": "commit-changes"
+}

@@ -8,10 +8,10 @@ Skills são **pacotes portáveis de instruções** que ensinam o Kiro a executar
 
 ## Skills vs Steering vs Powers
 
-| | Skills | Steering | Powers |
-|--|--------|----------|--------|
-| Carregamento | Sob demanda | Sempre/condicional | Dinâmico |
-| Portabilidade | ✅ Padrão aberto | Apenas Kiro | Apenas Kiro |
+| | Skills | Steering | 
+|--|--------|----------|
+| Carregamento | Sob demanda | Sempre/condicional
+| Portabilidade | ✅ Padrão aberto | Apenas Kiro
 | Scripts | ✅ Sim | Não | Via MCP |
 | Uso ideal | Workflows reutilizáveis | Regras constantes | Integrações |
 

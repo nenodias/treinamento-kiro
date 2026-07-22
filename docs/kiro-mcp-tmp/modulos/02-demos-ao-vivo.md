@@ -24,3 +24,9 @@ Explicar o código do MCP.
 ```text
 liste todos os produtos usando o products-mcp
 ```
+
+#### Análise: Desmistificando um MCP Oficial
+
+- Analisar um MCP oficial e mostrar as ferramentas que ele expõe e o que significa desabilitar
+- Exemplo na pasta: `docs/kiro-mcp/codigo-mcps-comuns/`
+  - O arquivo do MCP do Trello começa com as ferramentas disponíveis na **linha 514**, e é a primeira mostrada na IDE do Kiro em MCPs

@@ -8,16 +8,6 @@
       "env": {},
       "disabled": true,
       "autoApprove": []
-    },
-    "drawio": {
-      "command": "npx",
-      "args": [
-        "@drawio/mcp"
-      ],
-      "autoApprove": [
-        "open_drawio_mermaid",
-        "open_drawio_xml"
-      ]
     }
   }
 }

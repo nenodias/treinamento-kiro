@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "products-mcp": {
+      "command": "node",
+      "args": ["src/mcp.mjs"],
+      "cwd": "c:\\Users\\ricardo.silveira\\projects\\pags-kiro\\treinamento-kiro\\docs\\kiro-mcp-tmp\\mcp-local\\kiro-mcp",
+      "disabled": false,
+      "autoApprove": ["listar_products"]
+    }
+  }
+}

@@ -105,6 +105,8 @@ User config (global)  →  Workspace 1  →  Workspace 2  → ...
 4. **Aprovação**: Pede confirmação do usuário (a menos que esteja em `autoApprove`)
 5. **Resultado**: Incorpora o resultado na resposta
 
+> ⚠️ **CUIDADO**: MCP servers são **código executado na sua máquina**. Nunca instale servers de fontes desconhecidas ou não confiáveis — um server malicioso pode acessar arquivos, variáveis de ambiente, tokens e executar comandos arbitrários no seu sistema. Sempre verifique o código-fonte e a reputação do repositório antes de adicionar um novo MCP server.
+
 ### 7. Boas Práticas
 
 - ✅ Use `autoApprove` apenas para ferramentas **read-only** e seguras
@@ -126,24 +128,6 @@ User config (global)  →  Workspace 1  →  Workspace 2  → ...
 
 > 💡 **Regra prática**: Se você tem **1-3 servers** que usa o tempo todo → MCP direto. Se tem **5+ servers** especializados → encapsule em Powers.
 
-### 9. Demo ao Vivo — Sugestão de Roteiro
-
-#### Demo 1: Configurando um MCP Server (~5 min)
-1. Abrir `.kiro/settings/mcp.json`
-2. Adicionar o Trello MCP server
-3. Mostrar reconexão automática
-4. Testar com "Liste os boards do Trello"
-
-#### Demo 2: Usando ferramentas MCP no chat (~5 min)
-1. Pedir ao Kiro para criar um card no Trello
-2. Mostrar o fluxo de aprovação
-3. Configurar `autoApprove` para leitura
-4. Refazer a consulta — sem confirmação
-
-#### Demo 3: autoApprove e Segurança (~3 min)
-1. Explicar o conceito de aprovação
-2. Mostrar como listar ferramentas aprovadas
-3. Discutir riscos de aprovar operações de escrita
 
 ### 10. Troubleshooting Comum
 

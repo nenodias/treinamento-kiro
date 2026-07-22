@@ -3,11 +3,24 @@
 [MCP SDKs](https://modelcontextprotocol.io/docs/sdk)
 
 #### Demo 1: Listar os cards do Trello
-```
+
+```text
 Liste os cards no board do Trello
 ```
 
 #### Demo 2: MCP consultando o Projeto local
-```
+
+Explicar o código do MCP.
+
+**Pré-requisito:** API de listar produtos funcionando localmente (acessar no navegador `http://localhost:3000/products`).
+
+**Projeto do MCP** (`docs/kiro-mcp/mcp-local/`):
+
+- Mostrar cliente de acesso à API de produtos (`src/productService.mjs`)
+  - É um projeto comum, JS simples
+- Mostrar o arquivo com o SDK do MCP (`src/productService.mjs`)
+  - Explicar o conceito do SDK que faz a ligação com o client na IDE
+
+```text
 liste todos os produtos usando o products-mcp
 ```

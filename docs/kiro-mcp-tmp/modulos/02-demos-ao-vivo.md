@@ -18,7 +18,7 @@ Explicar o código do MCP.
 
 - Mostrar cliente de acesso à API de produtos (`src/productService.mjs`)
   - É um projeto comum, JS simples
-- Mostrar o arquivo com o SDK do MCP (`src/productService.mjs`)
+- Mostrar o arquivo com o SDK do MCP (`src/mcp.mjs`)
   - Explicar o conceito do SDK que faz a ligação com o client na IDE
 
 ```text

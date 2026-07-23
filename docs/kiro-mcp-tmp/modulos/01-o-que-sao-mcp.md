@@ -1,9 +1,5 @@
 # 🔌 Treinamento: MCP (Model Context Protocol) no Kiro
 
-## Sobre este treinamento
-
-Material de apoio para sessão de **~30 minutos** sobre **MCP — Model Context Protocol** no Kiro — o protocolo aberto que permite ao agente se conectar com ferramentas externas, APIs e fontes de dados em tempo real.
-
 ---
 
 ## O que é MCP?
@@ -24,7 +20,7 @@ MCP é um **protocolo aberto** que padroniza a comunicação entre agentes de IA
 
 ---
 
-## Pontos Principais da Apresentação
+## Pontos Principais
 
 ### 1. Conceito e Motivação
 

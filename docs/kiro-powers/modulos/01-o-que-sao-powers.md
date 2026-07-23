@@ -1,3 +1,16 @@
+### 8. MCP vs Powers
+
+| Aspecto | MCP puro | Kiro Powers |
+|---------|----------|-------------|
+| Carregamento | Sempre ativo | Sob demanda (por keywords) |
+| Contexto | Todas as ferramentas sempre visíveis | Só carrega quando relevante |
+| Documentação | Separada do server | Integrada (POWER.md) |
+| Compartilhamento | Copiar mcp.json | Instalar via repositório |
+| Ideal para | Poucos servers essenciais | Muitos servers especializados |
+
+
+
+
 # ⚡ Módulo 01 — O que são Kiro Powers e por que usar
 
 > ⏱️ Tempo estimado: ~5 minutos

@@ -5,8 +5,10 @@
 #### Demo 1: Listar os cards do Trello
 
 ```text
-Liste os cards no board do Trello
+Liste os meus boards no Trello
 ```
+Mostrar que ele pede permissão para usar a ferramenta
+
 
 #### Demo 2: MCP consultando o Projeto local
 
@@ -25,6 +27,12 @@ Explicar o código do MCP.
 liste todos os produtos usando o products-mcp
 ```
 
+- Desbilitar a ferramenta `listar_produtos` no `produtos-mcp`
+  - executar novamente o prompt de listar produtos e mostrar que o IA não consegue porque a ferramenta está desabilitada 
+
+
+
+----- (Opcional)
 #### Análise: Desmistificando um MCP Oficial
 
 - Analisar um MCP oficial e mostrar as ferramentas que ele expõe e o que significa desabilitar

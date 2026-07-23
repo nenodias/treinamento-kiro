@@ -73,15 +73,6 @@ Arquivo de configuração: `.kiro/settings/mcp.json` (workspace) ou `~/.kiro/set
 | `disabled` | Habilitar/desabilitar sem remover config |
 | `autoApprove` | Ferramentas aprovadas automaticamente (sem confirmação) |
 
-### 4. Precedência de Configuração
-
-```
-User config (global)  →  Workspace 1  →  Workspace 2  → ...
-   (menor)                                    (maior precedência)
-```
-
-- Configs são **mergeadas** — workspace sobrescreve global
-- Em multi-root workspaces, cada workspace pode ter sua própria config
 
 ### 5. Exemplos de MCP Servers Populares
 
@@ -120,16 +111,3 @@ User config (global)  →  Workspace 1  →  Workspace 2  → ...
 - 📌 [Documentação Kiro - MCP](https://kiro.dev/docs/mcp/)
 - 📌 [MCP Specification (oficial)](https://modelcontextprotocol.io/)
 - 📌 [Repositório de MCP Servers](https://github.com/modelcontextprotocol/servers)
-
----
-
-## Resumo para o Apresentador
-
-```
-1. MCP = protocolo aberto para conectar agentes a ferramentas externas
-2. Configuração simples via JSON (mcp.json)
-3. Servers rodam localmente como processos (uvx, npx)
-4. autoApprove controla quais ferramentas não pedem confirmação
-5. Powers encapsulam MCP servers + docs para uso sob demanda
-6. Boas práticas: poucos servers ativos, secrets em env vars, autoApprove só para leitura
-```

@@ -112,38 +112,8 @@ User config (global)  →  Workspace 1  →  Workspace 2  → ...
 - ❌ Não coloque secrets diretamente no `mcp.json` — use variáveis de ambiente
 - ❌ Evite muitos servers ativos simultaneamente — polui o contexto do agente
 
-### 8. MCP vs Powers
-
-| Aspecto | MCP puro | Kiro Powers |
-|---------|----------|-------------|
-| Carregamento | Sempre ativo | Sob demanda (por keywords) |
-| Contexto | Todas as ferramentas sempre visíveis | Só carrega quando relevante |
-| Documentação | Separada do server | Integrada (POWER.md) |
-| Compartilhamento | Copiar mcp.json | Instalar via repositório |
-| Ideal para | Poucos servers essenciais | Muitos servers especializados |
-
 > 💡 **Regra prática**: Se você tem **1-3 servers** que usa o tempo todo → MCP direto. Se tem **5+ servers** especializados → encapsule em Powers.
 
-
-### 10. Troubleshooting Comum
-
-| Problema | Solução |
-|----------|---------|
-| Server não conecta | Verificar se `uvx`/`npx` está instalado e no PATH |
-| Ferramenta não aparece | Reconectar via Command Palette → "MCP: Reconnect" |
-| Erro de permissão | Verificar variáveis de ambiente e tokens |
-| Server lento | Checar logs do MCP server no Output panel |
-| Conflito de config | Lembrar da precedência: workspace > global |
-
----
-
-## Pré-requisitos
-
-- **Kiro IDE** instalado e autenticado
-- **Python + uv** instalados (para servers com `uvx`)
-- **Node.js + npm** instalados (para servers com `npx`)
-
----
 
 ## Referências
 

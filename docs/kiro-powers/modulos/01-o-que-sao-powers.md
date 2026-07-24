@@ -9,6 +9,7 @@
 | Ideal para | Poucos servers essenciais | Muitos servers especializados |
 
 
+implements the code of card 'Cadastrar Produto' from trello
 
 
 # ⚡ Módulo 01 — O que são Kiro Powers e por que usar

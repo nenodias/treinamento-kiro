@@ -48,8 +48,20 @@ Este power utiliza dois MCP servers:
 ## Workflow Resumido
 
 ```
-Card do Trello → Refinamento → Validação → Implementação → Feature Branch → Commit → PR
+Card do Trello (coluna "Refinamento") → Refinamento → Validação → Mover para "Em execucao" → Implementação → Feature Branch → Commit → PR → Mover para "Code Review"
 ```
+
+## Regras de Transição de Colunas
+
+O card deve seguir transições obrigatórias de coluna no board do Trello:
+
+| Momento | Coluna | Regra |
+|---------|--------|-------|
+| Pré-refinamento | **Refinamento** | Card DEVE estar aqui para iniciar. Caso contrário, bloquear. |
+| Início da implementação | **Em execucao** | Mover automaticamente antes de escrever código. |
+| Após PR criada | **Code Review** | Mover automaticamente após sucesso da PR. |
+
+> **Importante:** O agente NÃO deve iniciar o refinamento se o card não estiver na coluna "Refinamento". Informar o usuário e aguardar.
 
 ### Etapa 1: Refinamento do Card
 

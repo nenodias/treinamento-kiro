@@ -14,6 +14,36 @@ Use este board como padrão para buscar cards e listas.
 
 ---
 
+## Regras de Transição de Colunas no Trello
+
+O card deve seguir transições específicas de coluna durante o fluxo. O agente é responsável por mover o card automaticamente conforme o progresso.
+
+| Etapa do Fluxo | Coluna Esperada | Ação do Agente |
+|----------------|-----------------|----------------|
+| Início (Refinamento) | **Refinamento** | O card DEVE estar nesta coluna para iniciar o refinamento. Se não estiver, informar o usuário e não prosseguir. |
+| Início da Implementação | **Em execucao** | Mover o card para esta coluna ao iniciar a Etapa 3 (Implementação). |
+| PR Aberta | **Code Review** | Mover o card para esta coluna após a PR ser criada com sucesso. |
+
+### Regras de Validação
+
+1. **Pré-condição para refinamento:** O card só pode ser refinado se estiver na coluna "Refinamento". Caso contrário, o agente deve:
+   - Informar ao usuário em qual coluna o card está atualmente
+   - Solicitar que o card seja movido para "Refinamento" antes de prosseguir
+   - NÃO iniciar o refinamento até que a pré-condição seja satisfeita
+
+2. **Transição para "Em execucao":** Antes de iniciar qualquer código, o agente DEVE mover o card para "Em execucao" usando o MCP do Trello. Isso sinaliza para a equipe que o card está sendo trabalhado.
+
+3. **Transição para "Code Review":** Após a PR ser criada com sucesso no GitHub, mover o card para "Code Review" automaticamente.
+
+### Como mover o card
+
+Para mover o card entre colunas, o agente deve:
+1. Buscar as listas do board usando o MCP do Trello
+2. Identificar o ID da lista de destino pelo nome
+3. Atualizar o card com o novo `idList`
+
+---
+
 ## Pré-requisitos
 
 Antes de iniciar, confirme:
@@ -21,10 +51,21 @@ Antes de iniciar, confirme:
 - [ ] MCP server do GitHub está conectado e funcional
 - [ ] O usuário forneceu o card do Trello (URL ou ID)
 - [ ] O repositório GitHub de destino está acessível
+- [ ] O card está na coluna "Refinamento" (pré-condição obrigatória)
 
 ---
 
 ## Etapa 1: Leitura e Refinamento do Card
+
+### 1.0 Validar coluna do card (PRÉ-CONDIÇÃO)
+
+Antes de qualquer ação, verificar em qual lista/coluna o card está:
+1. Obter o card do Trello e verificar o campo `idList`
+2. Buscar as listas do board para identificar o nome da coluna
+3. **Se o card NÃO estiver na coluna "Refinamento":**
+   - Informar: "O card está na coluna '[nome_atual]'. Para iniciar o refinamento, ele precisa estar na coluna 'Refinamento'."
+   - PARAR o fluxo e aguardar ação do usuário
+4. **Se o card ESTIVER na coluna "Refinamento":** prosseguir normalmente
 
 ### 1.1 Obter o conteúdo do card
 
@@ -123,6 +164,16 @@ Frases que indicam necessidade de ajuste:
 ---
 
 ## Etapa 3: Implementação
+
+### 3.0 Mover card para "Em execucao"
+
+**OBRIGATÓRIO antes de iniciar qualquer código:**
+1. Buscar as listas do board do Trello
+2. Identificar o ID da lista "Em execucao"
+3. Mover o card para esta lista usando o MCP do Trello (atualizar `idList`)
+4. Confirmar que a movimentação foi bem-sucedida
+
+> Isso sinaliza para a equipe que o card está sendo implementado.
 
 ### 3.1 Planejar a implementação
 
@@ -262,6 +313,14 @@ Usar o MCP do GitHub para criar a PR com:
 - **Base branch:** `main`
 - **Head branch:** `feature/<descricao>`
 
+### 4.5 Mover card para "Code Review"
+
+Após a PR ser criada com sucesso:
+1. Buscar as listas do board do Trello
+2. Identificar o ID da lista "Code Review"
+3. Mover o card para esta lista usando o MCP do Trello (atualizar `idList`)
+4. Confirmar a movimentação
+
 ---
 
 ## Resumo Final
@@ -270,12 +329,15 @@ Após completar todas as etapas, informar ao desenvolvedor:
 
 > "Fluxo completo finalizado:
 >
+> ✅ Card validado na coluna "Refinamento"
 > ✅ Card refinado e atualizado no Trello
 > ✅ Refinamento aprovado
+> ✅ Card movido para "Em execucao"
 > ✅ Implementação concluída
 > ✅ Feature branch criada: `feature/<nome>`
 > ✅ Commit realizado: `<mensagem do commit>`
 > ✅ PR aberta: [link da PR]
+> ✅ Card movido para "Code Review"
 >
 > A PR está pronta para review."
 

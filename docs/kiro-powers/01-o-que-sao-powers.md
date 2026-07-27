@@ -10,7 +10,7 @@ Agentes de IA enfrentam dois extremos ao lidar com ferramentas externas:
 
 ### 1. Sem contexto de framework → o agente adivinha
 
-O agente consegue chamar APIs do Stripe, mas será que ele sabe usar chaves de idempotência? Ele consegue consultar o banco, mas entende connection pooling para serverless?
+Ele consegue consultar o banco, mas entende connection pooling para serverless?
 
 **Sem conhecimento especializado**, você precisa manualmente ler documentação e refinar abordagens até o output ficar correto.
 

@@ -2,7 +2,7 @@
 name: "trello-to-pr"
 displayName: "Trello to PR"
 description: "Automatiza o fluxo completo desde o refinamento de um card do Trello até a abertura de uma Pull Request no GitHub. Inclui refinamento da história, implementação, versionamento com boas práticas e criação de PR."
-keywords: ["trello", "github", "refinamento", "pull-request", "feature-branch", "workflow"]
+keywords: ["trello", "github", "refinamento", "pull-request", "feature-branch", "workflow", "desenvolvimento"]
 author: "Fernando Henrique Utik"
 ---
 
@@ -18,6 +18,14 @@ Este power automatiza o ciclo completo de desenvolvimento a partir de um card do
 4. **Versionamento** — Cria feature branch, faz commit com mensagem semântica e abre PR para a main.
 
 O power segue boas práticas de nomenclatura de branches e commits, e nunca realiza commits diretamente em branches protegidas (main, master, develop).
+
+## Board do Trello (Padrão)
+
+- **Nome:** Kiro Spec Driven
+- **ID:** `6a46731096111dc5fee99116`
+- **URL:** https://trello.com/b/uPdgmhaQ/kiro-spec-driven
+
+Use este board como padrão para buscar cards e listas.
 
 ## Available Steering Files
 

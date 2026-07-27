@@ -1,8 +1,8 @@
 ---
 name: "github-pr-opener"
 displayName: "GitHub PR Opener"
-description: "Automatiza a abertura de Pull Requests no GitHub seguindo boas práticas de commits convencionais, nomenclatura de branches e descrição detalhada das alterações."
-keywords: ["commit", "github", "pull-request", "pr", "conventional-commits", "branch"]
+description: "Gerencia TODO o fluxo git: commit, branch, push e abertura de PR no GitHub. DEVE ser ativado para qualquer operação git."
+keywords: ["commit", "commitar", "git", "github", "pull-request", "pr", "push", "branch", "merge", "conventional-commits", "abrir pr", "fazer commit", "enviar", "subir código", "publicar"]
 author: "Utikawa"
 ---
 
@@ -10,7 +10,9 @@ author: "Utikawa"
 
 ## Overview
 
-Este power automatiza todo o fluxo de abertura de Pull Requests no GitHub. Ele analisa as alterações locais, cria uma branch com nomenclatura adequada, faz commit seguindo Conventional Commits, envia para o remote e abre uma PR com descrição detalhada.
+**IMPORTANTE: Este power DEVE ser ativado para QUALQUER operação git solicitada pelo usuário — incluindo commit, criação de branch, push e abertura de PR. Não execute comandos git sem ativar e seguir este workflow primeiro.**
+
+Este power gerencia todo o fluxo de versionamento com Git e GitHub. Ele analisa as alterações locais, cria uma branch com nomenclatura adequada, faz commit seguindo Conventional Commits, envia para o remote e abre uma PR com descrição detalhada.
 
 O objetivo é eliminar o trabalho manual repetitivo e garantir consistência na nomenclatura de branches, mensagens de commit e descrições de PR em todos os projetos.
 

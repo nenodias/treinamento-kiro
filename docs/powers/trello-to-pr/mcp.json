@@ -8,6 +8,7 @@
       "env": {
         "TRELLO_API_KEY": "${TRELLO_API_KEY}",
         "TRELLO_TOKEN": "${TRELLO_TOKEN}",
+        "TRELLO_BOARD_ID" : "6a46731096111dc5fee99116",
         "NODE_TLS_REJECT_UNAUTHORIZED": "0"
       }
     },

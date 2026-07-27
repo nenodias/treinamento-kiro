@@ -51,3 +51,21 @@ export interface ProductListResponse {
 export interface ProductErrorResponse {
   error: string;
 }
+
+/**
+ * Input body for creating a new product.
+ * The id and createdAt are generated server-side.
+ */
+export interface CreateProductInput {
+  name: string;
+  description: string;
+  price: number;
+  category: string;
+}
+
+/**
+ * Result of validating the create product body.
+ */
+export type CreateProductValidationResult =
+  | { success: true; data: CreateProductInput }
+  | { success: false; errors: ValidationError[] };

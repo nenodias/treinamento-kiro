@@ -2,7 +2,7 @@
 name: "github-pr-opener"
 displayName: "GitHub PR Opener"
 description: "Automatiza a abertura de Pull Requests no GitHub seguindo boas práticas de commits convencionais, nomenclatura de branches e descrição detalhada das alterações."
-keywords: ["github", "pull-request", "pr", "conventional-commits", "branch", "commit"]
+keywords: ["commit", "github", "pull-request", "pr", "conventional-commits", "branch"]
 author: "Utikawa"
 ---
 

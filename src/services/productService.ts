@@ -1,7 +1,5 @@
 import { Product } from '../database/products';
 import {
-  CreateProductInput,
-  CreateProductValidationResult,
   PaginationMetadata,
   ProductQueryParams,
   ValidationError,
@@ -177,88 +175,4 @@ export function paginateProducts(
   const data = products.slice(offset, offset + limit);
 
   return { data, metadata: { total, page, hasNext } };
-}
-
-const VALID_CATEGORIES = ['eletronicos', 'moveis', 'acessorios'];
-
-/**
- * Validates the request body for creating a new product.
- * Collects all validation errors in a single pass.
- */
-export function validateCreateProduct(body: unknown): CreateProductValidationResult {
-  const errors: ValidationError[] = [];
-
-  if (body === null || typeof body !== 'object') {
-    return { success: false, errors: [{ field: 'body', message: 'Request body must be a JSON object' }] };
-  }
-
-  const { name, description, price, category } = body as Record<string, unknown>;
-
-  // Validate name
-  if (name === undefined || name === null) {
-    errors.push({ field: 'name', message: 'name is required' });
-  } else if (typeof name !== 'string' || name.trim().length === 0) {
-    errors.push({ field: 'name', message: 'name must be a non-empty string' });
-  }
-
-  // Validate description
-  if (description === undefined || description === null) {
-    errors.push({ field: 'description', message: 'description is required' });
-  } else if (typeof description !== 'string' || description.trim().length === 0) {
-    errors.push({ field: 'description', message: 'description must be a non-empty string' });
-  }
-
-  // Validate price
-  if (price === undefined || price === null) {
-    errors.push({ field: 'price', message: 'price is required' });
-  } else if (typeof price !== 'number' || isNaN(price) || price <= 0) {
-    errors.push({ field: 'price', message: 'price must be a number greater than 0' });
-  }
-
-  // Validate category
-  if (category === undefined || category === null) {
-    errors.push({ field: 'category', message: 'category is required' });
-  } else if (typeof category !== 'string' || !VALID_CATEGORIES.includes(category)) {
-    errors.push({
-      field: 'category',
-      message: `category must be one of: ${VALID_CATEGORIES.join(', ')}`,
-    });
-  }
-
-  if (errors.length > 0) {
-    return { success: false, errors };
-  }
-
-  return {
-    success: true,
-    data: {
-      name: (name as string).trim(),
-      description: (description as string).trim(),
-      price: price as number,
-      category: category as string,
-    },
-  };
-}
-
-/**
- * Creates a new product and adds it to the in-memory store.
- * Generates a unique id and sets createdAt to the current timestamp.
- */
-export function createProduct(products: Product[], input: CreateProductInput): Product {
-  const maxId = products.reduce((max, p) => {
-    const numId = parseInt(p.id, 10);
-    return numId > max ? numId : max;
-  }, 0);
-
-  const newProduct: Product = {
-    id: String(maxId + 1),
-    name: input.name,
-    description: input.description,
-    price: input.price,
-    category: input.category,
-    createdAt: new Date().toISOString(),
-  };
-
-  products.push(newProduct);
-  return newProduct;
 }

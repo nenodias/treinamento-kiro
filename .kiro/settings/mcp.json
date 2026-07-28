@@ -8,6 +8,16 @@
       "env": {},
       "disabled": true,
       "autoApprove": []
+    },
+    "products-mcp": {
+      "command": "node",
+      "args": [
+        "docs/kiro-mcp-tmp/mcp-local/kiro-mcp/src/mcp.mjs"
+      ],
+      "env": {},
+      "disabled": false,
+      "autoApprove": [],
+      "disabledTools": []
     }
   }
 }

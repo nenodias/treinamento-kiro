@@ -33,7 +33,7 @@ O `/spec` traz o mesmo workflow de Spec-Driven Development do Kiro IDE para o te
 
 ```bash
 > /spec new user-auth       # Cria uma nova spec
-> /spec list                # Lista specs existentes
+> /spec                     # Lista specs existentes
 > /spec resume              # Retoma spec em progresso
 ```
 
@@ -124,7 +124,7 @@ O Kiro retoma de onde parou, verificando o estado atual do código.
 3. Revisar o design gerado
 4. Observar a execução task a task
 5. Verificar que testes passam ao final
-6. Mostrar `/spec list` para ver specs do projeto
+6. Mostrar `/spec` para ver specs do projeto
 
 ---
 

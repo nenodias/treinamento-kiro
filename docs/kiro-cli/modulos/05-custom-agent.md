@@ -4,31 +4,6 @@
 
 Custom Agents são configurações especializadas que definem **como** o Kiro se comporta para diferentes workflows. Cada agente pode ter suas próprias ferramentas, permissões, contexto e personalidade.
 
----
-
-## Criando um Agente
-
-### Criação assistida por IA (recomendado)
-
-```bash
-> /agent create code-reviewer
-```
-
-O Kiro faz perguntas para entender o propósito e gera a configuração automaticamente.
-
-### Com descrição e MCP servers
-
-```bash
-> /agent create code-reviewer -D "Revisão de código focada em segurança" -m github
-```
-
-### Criação manual via editor
-
-```bash
-> /agent create code-reviewer --manual
-```
-
-Abre o editor para escrever a configuração diretamente.
 
 ---
 
@@ -72,10 +47,9 @@ Nunca modifique arquivos — apenas reporte findings com severity e sugestão de
 ## Gerenciando Agentes
 
 ```bash
-> /agent list           # Lista todos os agentes disponíveis
+> /agent                # Lista todos os agentes disponíveis
 > /agent swap reviewer  # Troca para outro agente em runtime
 > /agent edit           # Edita o agente atual
-> /agent set-default    # Define agente padrão para o workspace
 ```
 
 ---
@@ -83,7 +57,7 @@ Nunca modifique arquivos — apenas reporte findings com severity e sugestão de
 ## Iniciando com Agente Específico
 
 ```bash
-kiro-cli chat --agent code-reviewer
+kiro-cli chat --agent kiro_guide
 ```
 
 ---
@@ -159,13 +133,7 @@ Use português brasileiro.
 
 ## Demo ao Vivo
 
-1. Criar um agente: `/agent create test-writer`
-2. Responder as perguntas do assistente de criação
-3. Listar agentes: `/agent list`
-4. Trocar para o novo agente: `/agent swap test-writer`
-5. Pedir para gerar testes de uma função existente
-6. Voltar ao agente padrão: `/agent swap default`
-
+1. /teste-generator analise e crie os testes do projeto
 ---
 
 > Próximo: Spec-Driven Development no terminal.

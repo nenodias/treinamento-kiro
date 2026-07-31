@@ -1,49 +1,52 @@
-# 🖥️ Kiro CLI — IA no Terminal
+# 💻 Treinamento: Kiro CLI
 
-## Sobre
+## Roteiro do Treinamento
 
-Treinamento prático sobre o **Kiro CLI** — a ferramenta de linha de comando da AWS que traz IA pro terminal. Autocomplete, tradução de linguagem natural pra shell, e chat que executa tarefas no projeto.
-
-Duração da sessão: **25 minutos**.
-
----
-
-## 📚 Módulos
-
-| # | Módulo | O que cobre |
-|---|--------|-------------|
-| 01 | [O que é e como instalar](modulos/01-introducao-e-instalacao.md) | Conceito, instalação, login |
-| 02 | [Autocomplete e Translate](modulos/02-autocomplete-e-translate.md) | Sugestões no terminal + linguagem natural → shell |
-| 03 | [Chat Agêntico](modulos/03-chat-agentico.md) | IA que lê, edita e executa no projeto |
-| 04 | [Steering, Agents e MCP](modulos/04-steering-agents-mcp.md) | Personalização e extensibilidade |
-| 05 | [Limitações e Referências](modulos/05-limitacoes-e-referencias.md) | O que não funciona + links úteis |
-
----
-
-## 💻 Projeto de Exemplo
-
-API simples em Node.js pra praticar os comandos ao vivo.
-
-➡️ [Ver projeto](projeto-exemplo/README.md)
+| # | Módulo | Descrição |
+|---|--------|-----------|
+| 1 | [Login e Autenticação](modulos/01-login.md) | Como fazer login no Kiro CLI |
+| 2 | [Modelo e Effort](modulos/02-modelo-e-effort.md) | Como escolher o modelo (`/model`, `/effort`) |
+| 3 | [Sessões e Contexto](modulos/03-sessoes-e-contexto.md) | Resume, save, load e `@file` |
+| 4 | [Plan](modulos/04-plan.md) | Planejamento estruturado (ex: novo endpoint de cadastro) |
+| 5 | [Custom Agent](modulos/05-custom-agent.md) | Criação e uso de agentes customizados |
+| 6 | [Spec](modulos/06-spec.md) | Spec-Driven Development no terminal |
 
 ---
 
 ## Pré-requisitos
 
-- Windows 11 com Windows Terminal (ou Mac/Linux)
-- Node.js 18+
-- Git
-- Conta AWS Builder ID (gratuita)
-- Internet
+- Kiro CLI instalado (Windows, macOS ou Linux)
+- Conta Kiro (Builder ID, social login, ou IAM Identity Center)
+- Projeto de exemplo clonado
+- Terminal com suporte a cores (recomendado: Windows Terminal, iTerm2, Ghostty)
 
 ---
 
-## Como usar
+## Instalação Rápida
 
-- **Na sessão ao vivo**: siga o [Guia Rápido](GUIA-RAPIDO-SESSAO.md)
-- **Estudo individual**: leia os módulos do 01 ao 05
-- **Prática**: rode o projeto-exemplo e teste os comandos
+### Windows
+
+```powershell
+irm 'https://cli.kiro.dev/install.ps1' | iex
+```
+
+### macOS / Linux
+
+```bash
+curl -fsSL https://cli.kiro.dev/install | bash
+```
 
 ---
 
-> Material interno. Maio/2026.
+## Links Úteis
+
+| Recurso | URL |
+|---------|-----|
+| Documentação oficial | https://kiro.dev/docs/cli/ |
+| Quick Start | https://kiro.dev/docs/cli/quick-start/ |
+| Slash Commands | https://kiro.dev/docs/cli/reference/slash-commands/ |
+| Custom Agents | https://kiro.dev/docs/cli/custom-agents/ |
+
+---
+
+> 📌 **Fonte oficial**: [Kiro CLI Documentation](https://kiro.dev/docs/cli/)

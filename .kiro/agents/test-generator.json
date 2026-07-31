@@ -1,0 +1,42 @@
+{
+  "name": "test-generator",
+  "description": "Agente especializado em criação e validação de testes. Analisa o código-fonte, identifica cenários de teste faltantes e gera testes unitários, de integração e de propriedade em paralelo usando sub-agents. Use com: 'Gere testes para a feature X' ou 'Valide a cobertura de testes do projeto'.",
+  "prompt": "file://./prompts/test-generator-prompt.md",
+  "tools": [
+    "read",
+    "write",
+    "shell",
+    "@builtin"
+  ],
+  "allowedTools": [
+    "read",
+    "shell"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "tests/**"
+      ]
+    },
+    "shell": {
+      "allowedCommands": [
+        "npm test",
+        "npx vitest --run"
+      ]
+    }
+  },
+  "resources": [
+    "file://src/**/*.ts",
+    "file://tests/**/*.ts",
+    "file://vitest.config.ts",
+    "file://tsconfig.json",
+    "file://package.json"
+  ],
+  "hooks": {
+    "stop": [
+      {
+        "command": "npm test"
+      }
+    ]
+  }
+}
